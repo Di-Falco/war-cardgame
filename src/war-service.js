@@ -1,4 +1,11 @@
 export default class WarService {
+  constructor () {
+    this.deck_id = 0;
+    this.player1 = " ";
+    this.player2 = " ";
+    this.pile1 = [];
+    this.pile2 = [];
+  }
   
   static async getDeck() {
     try {
@@ -47,11 +54,25 @@ export default class WarService {
 
   static async drawPile(deck, pile) {
     try {
-      const response = await fetch(`http://deckofcardsapi.com/api/deck/${deck}>/pile/${pile}/draw/?count=1`);
+      const response = await fetch(`http://deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pile}/draw/?count=1`);
       if (!response.ok) {
         throw Error(response.statusText);
       } 
-      return response.json();
+      const card = await response.json();
+      return card.cards[0];
+    } catch(error) {
+      return error.message;
+    }
+  }
+
+  static async listCards (deck, pile) {
+    try {
+      const response = await fetch(`http://deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pile}/list/`);
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const list = await response.json();
+      return list;
     } catch(error) {
       return error.message;
     }

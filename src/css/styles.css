@@ -1,0 +1,32 @@
+body {
+  background-color: darkgreen;
+}
+
+img {
+  width: 50%;
+  height: auto;
+  margin: auto;
+  display: block;
+}
+
+.box {
+  border: 10px double goldenrod;
+  background-color:darkred;
+  margin: 1%;
+  padding: 1%;
+  justify-content: center;
+}
+
+.new-game {
+  border: 10px double goldenrod;
+  background-color: black;
+  color: white;
+  width: 80%;
+  margin: auto;
+  padding: 1%;
+  display: block;
+}
+
+#output-card1, #output-card2 {
+  display: none;
+}
